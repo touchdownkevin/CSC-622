@@ -1,0 +1,166 @@
+-- Entities
+
+CREATE TABLE Accounts
+(
+	email VARCHAR(30) PRIMARY KEY,
+	password VARCHAR(15) NOT NULL,
+	phone VARCHAR(23) NOT NULL,
+	cphone VARCHAR(23),
+	fname VARCHAR(15) NOT NULL,
+	mname VARCHAR(15),
+	lname VARCHAR(15) NOT NULL,
+	status VARCHAR(10) NOT NULL,
+	type VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE Address
+(
+	add_id INT PRIMARY KEY,
+	city VARCHAR(25) NOT NULL,
+	county VARCHAR(25) NOT NULL,
+	state VARCHAR(2) NOT NULL,
+	zipcode VARCHAR(5) NOT NULL
+);
+
+CREATE TABLE Categories
+(
+	cate_id INT PRIMARY KEY,
+	parent_id INT NOT NULL,
+	cate_name VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE Items
+(
+	item_id INT PRIMARY KEY,
+	cate_id INT NOT NULL,
+	name VARCHAR(25) NOT NULL,
+	conditions VARCHAR(5) NOT NULL DEFAULT 'N/A',
+	amount TINYINT NOT NULL,
+	description LONGTEXT,
+	pic VARCHAR(20) DEFAULT 'default,jpg',
+	FOREIGN KEY(cate_id) REFERENCES Categories(cate_id)
+);
+
+-----------------------------------------------------------------
+-- Relations
+
+CREATE TABLE AddressBooks
+(
+	email VARCHAR(30) NOT NULL,
+	add_id INT NOT NULL,
+	major BOOLEAN NOT NULL DEFAULT false,
+	addr1 VARCHAR(35) NOT NULL,
+	addr2 VARCHAR(35),
+	FOREIGN KEY(email) REFERENCES Accounts(email),
+	FOREIGN KEY(add_id) REFERENCES Address(add_id)
+);
+
+CREATE TABLE Locations
+(
+	add_id INT NOT NULL,
+	item_id INT NOT NULL,
+	FOREIGN KEY(add_id) REFERENCES Address(acc_id),
+	FOREIGN KEY(item_id) REFERENCES Items(item_id)
+);
+
+-----------------------------------------------------------------
+-- Datas for Categories
+INSERT INTO Categories VALUES (1, 0, 'Electronic');
+
+INSERT INTO Categories VALUES (10000, 1, 'Computers Hardware');
+INSERT INTO Categories VALUES (20000, 1, 'PC');
+INSERT INTO Categories VALUES (30000, 1, 'Camera');
+INSERT INTO Categories VALUES (40000, 1, 'Cell Phone');
+INSERT INTO Categories VALUES (50000, 1, 'Home and Outdoor');
+INSERT INTO Categories VALUES (60000, 1, 'Laptop');
+INSERT INTO Categories VALUES (70000, 1, 'Software');
+INSERT INTO Categories VALUES (80000, 1, 'Audio and Video');
+
+INSERT INTO Categories VALUES (10100, 10000, 'CPU');
+INSERT INTO Categories VALUES (10200, 10000, 'Memory');
+INSERT INTO Categories VALUES (10300, 10000, 'HDD');
+INSERT INTO Categories VALUES (10400, 10000, 'Graphic Card');
+INSERT INTO Categories VALUES (10500, 10000, 'Mother Board');
+INSERT INTO Categories VALUES (10600, 10000, 'Cooler');
+INSERT INTO Categories VALUES (10700, 10000, 'Input Device');
+INSERT INTO Categories VALUES (10800, 10000, 'Mornitor');
+INSERT INTO Categories VALUES (11000, 10000, 'Power Supply');
+INSERT INTO Categories VALUES (11100, 10000, 'Sound System');
+INSERT INTO Categories VALUES (11300, 10000, 'Network');
+INSERT INTO Categories VALUES (11400, 10000, 'Printer and Scanner');
+INSERT INTO Categories VALUES (11500, 10000, 'Computer Accessory');
+INSERT INTO Categories VALUES (11600, 10000, 'Etc');
+
+INSERT INTO Categories VALUES (10101, 10100, 'Desktop CPU');
+INSERT INTO Categories VALUES (10102, 10100, 'Laptop CPU');
+INSERT INTO Categories VALUES (10103, 10100, 'Server CPU');
+INSERT INTO Categories VALUES (10104, 10100, 'Mobile CPU');
+INSERT INTO Categories VALUES (10105, 10100, 'CPU Etc');
+
+INSERT INTO Categories VALUES (10201, 10200, 'Desktop Memory');
+INSERT INTO Categories VALUES (10202, 10200, 'Laptop Memory');
+INSERT INTO Categories VALUES (10203, 10200, 'Server Memory');
+INSERT INTO Categories VALUES (10204, 10200, 'Mac Memory');
+INSERT INTO Categories VALUES (10205, 10200, 'Flash Memory');
+INSERT INTO Categories VALUES (10206, 10200, 'USB Memory');
+INSERT INTO Categories VALUES (10207, 10200, 'Memory Etc');
+
+INSERT INTO Categories VALUES (10301, 10300, '3.5 Inch');
+INSERT INTO Categories VALUES (10302, 10300, '2.5 Inch');
+INSERT INTO Categories VALUES (10303, 10300, 'SSD');
+INSERT INTO Categories VALUES (10304, 10300, 'Mac HDD');
+INSERT INTO Categories VALUES (10305, 10300, 'External HDD');
+INSERT INTO Categories VALUES (10306, 10300, 'Hdd Accessory');
+
+INSERT INTO Categories VALUES (10401, 10400, 'Desktop Graphic Card');
+INSERT INTO Categories VALUES (10402, 10400, 'Graphic Card Accessory');
+INSERT INTO Categories VALUES (10403, 10400, 'TV Tuner');
+
+INSERT INTO Categories VALUES (10501, 10500, 'Intel Motherboard');
+INSERT INTO Categories VALUES (10502, 10500, 'AMD Motherboard');
+INSERT INTO Categories VALUES (10503, 10500, 'Motherboard Accessory');
+INSERT INTO Categories VALUES (10504, 10500, 'Motherboard Etc');
+
+INSERT INTO Categories VALUES (10601, 10600, 'Case Cooler');
+INSERT INTO Categories VALUES (10602, 10600, 'CPU Cooler');
+INSERT INTO Categories VALUES (10603, 10600, 'Hard Drive Cooler');
+INSERT INTO Categories VALUES (10604, 10600, 'Memory Cooler');
+INSERT INTO Categories VALUES (10605, 10600, 'Graphic Card Cooler');
+INSERT INTO Categories VALUES (10606, 10600, 'Cooler Etc');
+
+INSERT INTO Categories VALUES (10701, 10700, 'Keyboard');
+INSERT INTO Categories VALUES (10702, 10700, 'Mouse');
+INSERT INTO Categories VALUES (10703, 10700, 'Tablet');
+INSERT INTO Categories VALUES (10704, 10700, 'Microphone');
+INSERT INTO Categories VALUES (10705, 10700, 'Game Pad');
+INSERT INTO Categories VALUES (10706, 10700, 'Input Device Etc');
+
+INSERT INTO Categories VALUES (10801, 10800, 'CRT');
+INSERT INTO Categories VALUES (10802, 10800, 'LCD');
+INSERT INTO Categories VALUES (10803, 10800, 'LED');
+INSERT INTO Categories VALUES (10804, 10800, 'Touch Screen Mornitor');
+INSERT INTO Categories VALUES (10805, 10800, 'Mornitor Accessory');
+INSERT INTO Categories VALUES (10806, 10800, 'Mornitor Etc');
+
+INSERT INTO Categories VALUES (11001, 11000, 'PC Power Supply');
+INSERT INTO Categories VALUES (11002, 11000, 'Server Power Supply');
+INSERT INTO Categories VALUES (11003, 11000, 'Power Supply Etc');
+
+INSERT INTO Categories VALUES (11101, 11100, 'Sound Card');
+INSERT INTO Categories VALUES (11102, 11100, 'Speaker');
+INSERT INTO Categories VALUES (11103, 11100, 'Headphone and Earphone');
+INSERT INTO Categories VALUES (11104, 11100, 'Sound Accessory');
+INSERT INTO Categories VALUES (11105, 11100, 'Sound Etc');
+
+INSERT INTO Categories VALUES (11301, 11300, 'Modem');
+INSERT INTO Categories VALUES (11302, 11300, 'Router');
+INSERT INTO Categories VALUES (11303, 11300, 'PC Network System');
+INSERT INTO Categories VALUES (11304, 11300, 'Laptop Network System');
+INSERT INTO Categories VALUES (11305, 11300, 'USB Network System');
+INSERT INTO Categories VALUES (11306, 11300, 'Network Etc');
+
+INSERT INTO Categories VALUES (11401, 11400, 'Printer');
+INSERT INTO Categories VALUES (11402, 11400, 'Scanner');
+INSERT INTO Categories VALUES (11403, 11400, 'All in One');
+INSERT INTO Categories VALUES (11404, 11400, 'Printer Accessory');
+INSERT INTO Categories VALUES (11405, 11400, 'Printer and Scanner Etc');

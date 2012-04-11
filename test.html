@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="dojo/dojox/form/resources/Rating.css" />
+ <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
+        djConfig="parseOnLoad: true">
+</script>
+        
+<script>
+dojo.require("dojox.form.Rating");
+dojo.require("dojo.parser");
+dojo.require("dijit.form.Form");
+  dojo.require("dijit.form.FilteringSelect");
+  dojo.require("dijit.form.Button");
+
+</script>
+    </head>
+    <body>
+
+<p id="inlineEvents">
+    <span data-dojo-type="dojox.form.Rating" data-dojo-props="numStars:10, value:4" rating = "readonly">
+      <script type="dojo/event" data-dojo-event="onChange">
+        dojo.query('#inlineEvents .value')[0].innerHTML = this.value;
+	alert(this.value);
+      </script>
+      <script type="dojo/event" data-dojo-event="onMouseOver" data-dojo-args="evt,value">
+        dojo.query('#inlineEvents .hoverValue')[0].innerHTML = value;
+	 value = 4;
+      </script>
+    </span>
+    <br /><br />
+    The value is: <b><span class="value">0</span></b><br />
+    The mouse is over: <b><span class="hoverValue">0</span></b>
+  </p>
+
+    </body>
+</html>
+

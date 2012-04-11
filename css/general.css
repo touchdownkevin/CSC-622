@@ -1,0 +1,167 @@
+/*** Fall 2011 CSS style sheet
+
+/************************** Basic Structure **************************/
+
+HTML {
+	font-size: 100%;
+	height: 100%;
+	margin-bottom: 1px;
+}
+
+BODY {	
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333333;
+	font-size: 12px;
+	padding: 0;
+	margin: 0 auto;
+	background: #dddddd;
+}
+
+/************************** Header Structure **************************/
+div.header {
+	padding: 0;
+}
+
+div.welcome-user {
+	margin: 5px 20px 0px 5px;
+	float: left;
+	color: white;
+}
+
+div.main-menu-content{
+	background: #303123;
+	color: black;
+	width: 100%;
+	height: 40px;
+	font-size: 15px;
+}
+
+div.header-logo {
+	float: left;
+	height: 40px;
+	width: 200px;
+	margin-top: 5px;
+}
+
+div.search-bar {
+	width: 100%;
+	height: 50px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(orange), to(white));
+}
+
+div.home {
+	float: center;
+}
+
+div.wrapper-sublink {
+	margin: 5px 10px 0px 5px;
+	float: right;
+}
+
+.search_box {
+	width: 100%;
+}
+
+a.sublink {
+	height: 20px;
+	width: 100px;
+	-webkit-border-radius: 5px;
+	background-color: #FF9933;
+	display: block;
+	border: 1px solid #FF3333;
+	text-decoration: none;
+	color: #990000;
+	align: center;
+}
+
+a.sublink:hover {
+	height: 20px;
+	width: 100px;
+	-webkit-border-radius: 5px;
+	background-color: #FFBB55;
+	display: block;
+	border: 1px solid #FF3333;
+	text-decoration: none;
+	color: #BB0000;
+	align: center;
+}
+
+.s-bt {
+	height: 28px;
+	border-radius: 5px;
+	font: bold 19px Trebuchet, "Trebuchet MS";
+	padding: 0 17px 2px;
+	color: white;
+	background: orange;
+}
+
+.s-bt:hover {
+	height: 28px;
+	border-radius: 5px;
+	font: bold 19px Trebuchet, "Trebuchet MS";
+	padding: 0 17px 2px;
+	color: white;
+	background: #FFBB55;
+}
+
+/************************** General Structure **************************/
+ms.alert {
+	color: red;
+	font: 10px Arial, Geneva, Helvetica, sans serif;
+}
+
+ms.title {
+	color: #FF9933;
+	font-size: 24px;
+}
+
+.g-bt {
+	height: 24px;
+	border-radius: 5px;
+	font: bold 14px Trebuchet, "Trebuchet MS";
+	padding: 0 17px 2px;
+	color: white;
+	background: orange;
+}
+
+.g-bt:hover {
+	height: 24px;
+	border-radius: 5px;
+	font: bold 14px Trebuchet, "Trebuchet MS";
+	padding: 0 17px 2px;
+	color: white;
+	background: #FFBB55;
+}
+
+iframe.detail {
+	width: 100%;
+	height: 100%;
+	border: 0px;
+	scrolling: auto;
+}
+
+div.my_account {
+	text-align: center;
+}
+
+tr.items {
+	height: 150px;
+}
+
+tr.items:hover {
+	background: #aaaaaa;
+}
+
+td.picture {
+	text-align: center;
+}
+
+a.item_link {
+	font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+	text-decoration: none;
+	color: blue;
+}
+
+a.item_link:hover {
+	text-decoration: underline;
+}
